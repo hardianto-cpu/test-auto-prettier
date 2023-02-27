@@ -1,6 +1,6 @@
 name: prettier bot
 
-on:
+on
   push:
   pull_request:
     branches: 
@@ -11,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
-
+      workflows: write
+      actions: write
+      security-events: write
     steps: 
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actionsx/prettier@v2
         with:
-          node-version: '14'
-      - run: npm install -g prettier
-      - run: prettier --write . --list-different
+          args: --write . --list-different
       - uses: stefanzweifel/git-auto-commit-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.token }}
         with:
           commit_message: Prettier Bot
           commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
