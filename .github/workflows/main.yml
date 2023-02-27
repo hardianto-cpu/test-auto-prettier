@@ -1,6 +1,6 @@
 name: prettier bot
 
-on
+on:
   push:
   pull_request:
     branches: 
