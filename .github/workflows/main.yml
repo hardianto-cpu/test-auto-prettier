@@ -24,4 +24,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           prettier_options: --write . --list-different
+          only_changed: True
           github_token: ${{ secrets.TOKEN }}
