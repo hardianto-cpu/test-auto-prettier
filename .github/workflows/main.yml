@@ -24,9 +24,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           prettier_options: --write . --list-different
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Prettier Bot
-          commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
-          commit_user_email: antojago5@gmail.com # defaults to "41898282+github-actions[bot]@users.noreply.github.com"
-          commit_author: Hardianto <hardianto-cpu@github.com> # defaults to author of the commit that triggered the run
+          dry: True
+          github_token: ${{ secrets.TOKEN }}
