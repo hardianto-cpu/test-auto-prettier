@@ -1,0 +1,29 @@
+name: prettier bot
+
+on:
+  push:
+  pull_request:
+    branches: 
+      - stale
+
+jobs:
+  holderBot:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+
+    steps: 
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g prettier
+      - run: npm run prettier
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
+        with:
+          commit_message: Prettier Bot
+          commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
+          commit_user_email: antojago5@gmail.com # defaults to "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: Hardianto <hardianto-cpu@github.com> # defaults to author of the commit that triggered the run
